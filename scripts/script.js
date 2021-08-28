@@ -1,13 +1,19 @@
 const GAME_FIELD_SIZE = 16;
-const gameField = document.querySelector(".game-container");
+const gameField = document.querySelector(".game-field");
 
 function createDivForField() {
   let divOnField = document.createElement("div");
 
-  divOnField.style.backgroundColor = "red";
-  divOnField.style.border = "1px solid yellow";
+  divOnField.style.backgroundColor = "white";
+  divOnField.classList.add("game-field-cell");
+
+  divOnField.addEventListener("mouseover", changeCellColor);
 
   return divOnField;
+}
+
+function changeCellColor(e) {
+  e.target.style.backgroundColor = "black";
 }
 
 function getAmountOfDivsOnField(fieldSize) {

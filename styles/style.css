@@ -11,8 +11,10 @@ body {
   align-items: center;
 }
 
-.game-container {
+.game-field {
   display: grid;
   width: 640px;
   height: 640px;
+  box-sizing: content-box;
+  border: 3px solid black;
 }
