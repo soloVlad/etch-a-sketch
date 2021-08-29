@@ -7,26 +7,36 @@
     <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="icon" href="images/favicon.svg" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="game-field"></div>
-    <button id="clear-button">Clear</button>
-    <button id="black-pen-button">Black</button>
-    <button id="random-color-button">Random mode</button>
-
-    <form>
-      <input
-        type="range"
-        id="field-size"
-        name="field-size"
-        min="16"
-        max="101"
-        value="16"
-        step="4"
-      />
-      <label for="field-size" id="field-size-value"></label>
-    </form>
-
+    <div class="game-controllers">
+      <button class="controller" id="clear-button">Clear</button>
+      <form class="size-changer">
+        <input
+          type="range"
+          id="field-size"
+          name="field-size"
+          min="16"
+          max="101"
+          value="16"
+          step="4"
+        />
+        <label
+          for="field-size"
+          class="field-size-value"
+          id="field-size-value"
+        ></label>
+      </form>
+      <button class="controller" id="black-pen-button">Black</button>
+      <button class="controller" id="random-color-button">Random mode</button>
+    </div>
     <script src="scripts/script.js"></script>
   </body>
 </html>
