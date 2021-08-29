@@ -1,11 +1,17 @@
 const gameField = document.querySelector(".game-field");
 const clearButton = document.querySelector("#clear-button");
+const gameFieldSizeChanger = document.querySelector("#field-size");
+const labelForFieldSize = document.querySelector("#field-size-value");
 
-let gameFieldSize = 16;
+let gameFieldSize = gameFieldSizeChanger.value;
 let amountOfDivsOnField = getAmountOfDivsOnField(gameFieldSize);
 
 function getAmountOfDivsOnField(fieldSize) {
   return fieldSize * fieldSize;
+}
+
+function displayFieldSize() {
+  labelForFieldSize.textContent = `Size: ${gameFieldSize}`;
 }
 
 function createDivForField() {
@@ -49,6 +55,15 @@ function clearGameField() {
   createGameField();
 }
 
+function changeFieldSize() {
+  gameFieldSize = gameFieldSizeChanger.value;
+  amountOfDivsOnField = getAmountOfDivsOnField(gameFieldSize);
+  clearGameField();
+  displayFieldSize();
+}
+
 clearButton.addEventListener("click", clearGameField);
+gameFieldSizeChanger.addEventListener("change", changeFieldSize);
 
 createGameField();
+displayFieldSize();
