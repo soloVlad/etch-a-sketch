@@ -1,5 +1,12 @@
-const GAME_FIELD_SIZE = 16;
 const gameField = document.querySelector(".game-field");
+const clearButton = document.querySelector("#clear-button");
+
+let gameFieldSize = 16;
+let amountOfDivsOnField = getAmountOfDivsOnField(gameFieldSize);
+
+function getAmountOfDivsOnField(fieldSize) {
+  return fieldSize * fieldSize;
+}
 
 function createDivForField() {
   let divOnField = document.createElement("div");
@@ -16,25 +23,32 @@ function changeCellColor(e) {
   e.target.style.backgroundColor = "black";
 }
 
-function getAmountOfDivsOnField(fieldSize) {
-  return fieldSize * fieldSize;
+function makeFieldSquare() {
+  gameField.style.gridTemplateColumns = `repeat(${gameFieldSize}, 1fr)`;
+  gameField.style.gridTemplateRows = `repeat(${gameFieldSize}, 1fr)`;
+  gameField.style.gridGap = "0px";
 }
 
-function makeFieldSquare(field, fieldSize) {
-  field.style.gridTemplateColumns = `repeat(${fieldSize}, 1fr)`;
-  field.style.gridTemplateRows = `repeat(${fieldSize}, 1fr)`;
-  field.style.gridGap = "0px";
-}
-
-function createGameField(fieldSize) {
-  let amountOfDivsOnField = getAmountOfDivsOnField(fieldSize);
-
+function createGameField() {
   for (let i = 0; i < amountOfDivsOnField; i++) {
     let newDiv = createDivForField();
     gameField.appendChild(newDiv);
   }
 
-  makeFieldSquare(gameField, fieldSize);
+  makeFieldSquare();
 }
 
-createGameField(GAME_FIELD_SIZE);
+function deleteGameField() {
+  while (gameField.firstChild) {
+    gameField.removeChild(gameField.firstChild);
+  }
+}
+
+function clearGameField() {
+  deleteGameField();
+  createGameField();
+}
+
+clearButton.addEventListener("click", clearGameField);
+
+createGameField();
