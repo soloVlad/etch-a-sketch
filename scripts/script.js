@@ -1,4 +1,4 @@
-const DRAWING_OPTIONS = ["black", "random", "grayscale"];
+const DRAWING_OPTIONS = ["black", "random"];
 const gameField = document.querySelector(".game-field");
 const clearButton = document.querySelector("#clear-button");
 const gameFieldSizeChanger = document.querySelector("#field-size");
@@ -91,10 +91,6 @@ blackPenButton.addEventListener("click", () => {
 
 randomPenButton.addEventListener("click", () => {
   drawingMode = DRAWING_OPTIONS[1];
-});
-
-grayscalePenButton.addEventListener("click", () => {
-  drawingMode = DRAWING_OPTIONS[2];
 });
 
 createGameField();
