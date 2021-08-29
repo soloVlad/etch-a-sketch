@@ -1,10 +1,16 @@
+const DRAWING_OPTIONS = ["black", "random", "grayscale"];
 const gameField = document.querySelector(".game-field");
 const clearButton = document.querySelector("#clear-button");
 const gameFieldSizeChanger = document.querySelector("#field-size");
 const labelForFieldSize = document.querySelector("#field-size-value");
 
+const blackPenButton = document.querySelector("#black-pen-button");
+const randomPenButton = document.querySelector("#random-color-button");
+const grayscalePenButton = document.querySelector("#grayscale-button");
+
 let gameFieldSize = gameFieldSizeChanger.value;
 let amountOfDivsOnField = getAmountOfDivsOnField(gameFieldSize);
+let drawingMode = DRAWING_OPTIONS[0];
 
 function getAmountOfDivsOnField(fieldSize) {
   return fieldSize * fieldSize;
@@ -26,7 +32,21 @@ function createDivForField() {
 }
 
 function changeCellColor(e) {
-  e.target.style.backgroundColor = "black";
+  if (drawingMode === DRAWING_OPTIONS[0]) {
+    e.target.style.backgroundColor = "black";
+  } else if (drawingMode === DRAWING_OPTIONS[1]) {
+    e.target.style.backgroundColor = getRandomColor();
+  }
+}
+
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+
+  return color;
 }
 
 function makeFieldSquare() {
@@ -64,6 +84,18 @@ function changeFieldSize() {
 
 clearButton.addEventListener("click", clearGameField);
 gameFieldSizeChanger.addEventListener("change", changeFieldSize);
+
+blackPenButton.addEventListener("click", () => {
+  drawingMode = DRAWING_OPTIONS[0];
+});
+
+randomPenButton.addEventListener("click", () => {
+  drawingMode = DRAWING_OPTIONS[1];
+});
+
+grayscalePenButton.addEventListener("click", () => {
+  drawingMode = DRAWING_OPTIONS[2];
+});
 
 createGameField();
 displayFieldSize();
