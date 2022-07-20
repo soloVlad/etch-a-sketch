@@ -26,7 +26,7 @@ function createDivForField() {
   divOnField.style.backgroundColor = "white";
   divOnField.classList.add("game-field-cell");
 
-  divOnField.addEventListener("mouseover", changeCellColor);
+  // divOnField.addEventListener("mouseover", changeCellColor);
 
   return divOnField;
 }
@@ -82,6 +82,7 @@ function changeFieldSize() {
   displayFieldSize();
 }
 
+gameField.addEventListener("mouseover", changeCellColor);
 clearButton.addEventListener("click", clearGameField);
 gameFieldSizeChanger.addEventListener("change", changeFieldSize);
 
