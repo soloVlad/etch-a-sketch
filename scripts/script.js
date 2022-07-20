@@ -52,7 +52,6 @@ function getRandomColor() {
 function makeFieldSquare() {
   gameField.style.gridTemplateColumns = `repeat(${gameFieldSize}, 1fr)`;
   gameField.style.gridTemplateRows = `repeat(${gameFieldSize}, 1fr)`;
-  gameField.style.gridGap = "0px";
 }
 
 function createGameField() {
